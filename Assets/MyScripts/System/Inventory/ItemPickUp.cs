@@ -11,6 +11,10 @@ public class ItemPickUp : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        //EventBus.Instance.PauseGameplay();
+
+        //DialougePrinter.Instance.PrintDialougeLine(_itemData.WorldDescription);
+
         EventBus.Instance.PickUpItem(_itemData);
         Destroy(gameObject);
     }

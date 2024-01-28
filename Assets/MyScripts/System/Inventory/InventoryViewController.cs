@@ -31,7 +31,7 @@ public class InventoryViewController : MonoBehaviour
 
     [SerializeField] private List<Button> _contextMenuIgnore;
 
-    [SerializeField] private GameObject footStepAudio;
+    [SerializeField] private AudioSource footStepAudio;
 
     private enum State
     {
@@ -48,21 +48,27 @@ public class InventoryViewController : MonoBehaviour
     {
         _fader.FadeToBlack(1f,FadeToUseItemCallback );
     }
-
+    
     public void FadeToUseItemCallback()
     {
         _contextMenuObject.SetActive(false);
         _inventoryViewObject.SetActive(false);
-
+        footStepAudio.volume = 1f;
+        
         foreach (var button in _contextMenuIgnore)
         {
             button.interactable = true;
         }
+        
         EventSystem.current.SetSelectedGameObject(_currentSlot.gameObject);
+        
         _fader.FadeFromBlack(0.5f, () => EventBus.Instance.UseItem(_currentSlot.itemData));
         _state = State.menuClosed;
+        
         EventBus.Instance.ResumeGameplay();
     }
+
+
     public void OnSlotSelected(ItemSlot selectedSlot)
     {
         _currentSlot = selectedSlot;
@@ -78,6 +84,7 @@ public class InventoryViewController : MonoBehaviour
         _itemNameText.SetText(selectedSlot.itemData.name);
         _itemDescriptionText.SetText(selectedSlot.itemData.Description[0]);
     }
+
 
     // Subscribe and Unsubscribe to the onPickUpItem event in EventBus
     private void OnEnable()
@@ -103,6 +110,10 @@ public class InventoryViewController : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        footStepAudio = footStepAudio.GetComponent<AudioSource>();
+    }
     private void Update()
     {
         // Toggle the inventory view on/off when the Tab key is pressed
@@ -162,19 +173,17 @@ public class InventoryViewController : MonoBehaviour
 
         }
     }
-
-    private void ActivateButton(){}
     private void FadeToMenuCallback()
     {
         _inventoryViewObject.SetActive(true);
-        footStepAudio.SetActive(false);
+        footStepAudio.volume = 0f;
         _fader.FadeFromBlack(0.3f,  null);
     }
 
     private void FadeFromMenuCallback()
     {
         _inventoryViewObject.SetActive(false);
-        footStepAudio.SetActive(true);
+        footStepAudio.volume = 10f;
         _fader.FadeFromBlack(0.3f, EventBus.Instance.ResumeGameplay);
     }
 }
