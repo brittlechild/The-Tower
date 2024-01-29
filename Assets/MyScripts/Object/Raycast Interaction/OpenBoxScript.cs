@@ -9,6 +9,8 @@ public class OpenBoxScript : MonoBehaviour, IInteractable
     public GameObject openText;
     public GameObject keyMissingText;
     public AudioSource openSound;
+    
+    private WaitForSeconds interactionDelay = new WaitForSeconds(1f);
 
     private bool isOpen;
 
@@ -33,6 +35,7 @@ public class OpenBoxScript : MonoBehaviour, IInteractable
         {
             openText.SetActive(false);
             keyMissingText.SetActive(true);
+            StartCoroutine(DisableTextAfterDelay());
         }
 
         if (isOpen)
@@ -57,4 +60,12 @@ public class OpenBoxScript : MonoBehaviour, IInteractable
         openText.SetActive(false);
         keyMissingText.SetActive(false);
     }
+    
+    private IEnumerator DisableTextAfterDelay()
+    {
+        // Wait for the specified duration
+        yield return interactionDelay;
+
+        // Disable the textOB
+        keyMissingText.SetActive(false);    }
 }
