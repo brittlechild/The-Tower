@@ -9,6 +9,8 @@ public class ItemSlot : MonoBehaviour, ISelectHandler
 {
     public ItemData itemData;
 
+    public GameObject equippedObject;
+
     private InventoryViewController _viewController;
 
     private Image _spawnedItemSprite;
@@ -24,6 +26,15 @@ public class ItemSlot : MonoBehaviour, ISelectHandler
         return itemData == null;
     }
 
+    public void ClearItemData()
+    {
+        itemData = null;
+
+        if (_spawnedItemSprite != null)
+        {
+            Destroy(_spawnedItemSprite.gameObject);
+        }
+    }
     private void OnEnable()
     {
         // Find and store a reference to the InventoryViewController

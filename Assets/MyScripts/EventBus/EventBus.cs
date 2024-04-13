@@ -12,13 +12,14 @@ public class EventBus : MonoBehaviour
 
     public event Action onCloseInventory;
 
-    public event Action<ItemData> onPickUpItem;
+    public event Action<ItemData, GameObject> onPickUpItem;
 
     public event Action onGameplayPaused;
 
     public event Action onGameplayResumed;
 
     public event Action<ItemData> onItemUsed;
+    
 
     // Method to invoke the onOpenInventory event
     public void OpenInventory()
@@ -32,9 +33,9 @@ public class EventBus : MonoBehaviour
     }
 
     // Method to invoke the onPickUpItem event, providing ItemData
-    public void PickUpItem(ItemData itemData)
+    public void PickUpItem(ItemData itemData, GameObject equippedObject)
     {
-        onPickUpItem?.Invoke(itemData);
+        onPickUpItem?.Invoke(itemData, equippedObject);
     }
 
     public void PauseGameplay()

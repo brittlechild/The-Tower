@@ -1,21 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-
-
 public class ItemPickUp : MonoBehaviour, IInteractable
 {
     [SerializeField] private ItemData _itemData;
+    [SerializeField] private GameObject equippedObject;
     [SerializeField] private GameObject pickUpText;
 
     public void Interact()
     {
-        //EventBus.Instance.PauseGameplay();
-
-        //DialougePrinter.Instance.PrintDialougeLine(_itemData.WorldDescription);
-
-        EventBus.Instance.PickUpItem(_itemData);
+        EventBus.Instance.PickUpItem(_itemData, equippedObject);
         Destroy(gameObject);
     }
 

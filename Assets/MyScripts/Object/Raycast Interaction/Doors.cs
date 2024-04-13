@@ -30,17 +30,7 @@ public class Doors : MonoBehaviour, IInteractable
     {
         return openText;
     }
-
-    void OnTriggerEnter(Collider other)
-    {
-        openText.SetActive(true);
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        openText.SetActive(false);
-    }
-
+    
     void DoorOpens()
     {
         door.SetBool("open", false);

@@ -16,3 +16,5 @@ MonoBehaviour:
   _description:
   - Use this to heal myself
   _sprite: {fileID: 6682184105254307456, guid: c09fb5743dd442b4684a0b5c15b9f63d, type: 3}
+  _isEquippable: 0
+  _isConsumable: 1

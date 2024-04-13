@@ -41,7 +41,6 @@ public class Revolver : MonoBehaviour
 
     private float nextTimeToFire = 0f;
     [Space(10)]
-    public InventorySwitch inventorySwitch;
     [Space(10)]
 
     public GameObject gun;
@@ -156,7 +155,6 @@ public class Revolver : MonoBehaviour
     IEnumerator Reload()
     {
         // Disable switching during reload
-        inventorySwitch.isSwitchingDisabled = true;
         reloadSound.Play();
 
         // Set reloading flag and trigger animation
@@ -176,7 +174,6 @@ public class Revolver : MonoBehaviour
 
         // Reset reloading flag and enable switching
         isReloading = false;
-        inventorySwitch.isSwitchingDisabled = false;
     }
 
 }

@@ -16,3 +16,5 @@ MonoBehaviour:
   _description:
   - It's a rusty key
   _sprite: {fileID: 8683724565479181102, guid: ac9d77ab7c1b9fe4a990766d8334e4f3, type: 3}
+  _isEquippable: 0
+  _isConsumable: 1

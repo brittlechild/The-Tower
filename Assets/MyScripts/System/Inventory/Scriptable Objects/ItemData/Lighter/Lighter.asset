@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e47d5ef8554c6c44bb98ae23f035073, type: 3}
-  m_Name: Gun
+  m_Name: Lighter
   m_EditorClassIdentifier: 
-  _name: Gun
+  _name: Lighter
   _description:
-  - It's a gun.
-  _sprite: {fileID: 2082967215497159166, guid: 254445bb751da784192b4506d30ec80c, type: 3}
+  - It's a lighter
+  _sprite: {fileID: 3085955897932848070, guid: 3617c276bf7125045a10e096ac04aada, type: 3}
+  _prefab: {fileID: 7664613556907092736, guid: 6fbf441231d34bd4e80789434f79c29b, type: 3}
   _isEquippable: 1
+  _equippedGameObject: {fileID: 7664613556907092736, guid: 6fbf441231d34bd4e80789434f79c29b, type: 3}

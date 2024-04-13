@@ -1,17 +1,15 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BoxInteraction : MonoBehaviour
 {
     [SerializeField] private ItemData _requiredItem;
     private Renderer _renderer;
-
+    
     private void Awake()
     {
         _renderer = GetComponent<Renderer>();
     }
+    
     private void OnEnable()
     {
         EventBus.Instance.onItemUsed += onItemUsed;

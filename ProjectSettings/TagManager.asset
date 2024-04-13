@@ -8,6 +8,7 @@ TagManager:
   - Ladder
   - Reach
   - Selectable
+  - canPickUp
   layers:
   - Default
   - TransparentFX
@@ -19,8 +20,8 @@ TagManager:
   - Night Vision
   - Ground
   - Interactable
-  - 
-  - 
+  - Snow
+  - holdLayer
   - 
   - 
   - 

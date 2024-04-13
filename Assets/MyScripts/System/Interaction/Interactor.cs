@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 interface IInteractable
@@ -12,15 +10,11 @@ public class Interactor : MonoBehaviour
 {
     public Transform InteractorSource;
     public float InteractRange;
-    public LayerMask interactableLayer;
     public GameObject ePrompt;
+    
+    public LayerMask interactableLayer;
 
     private GameObject currentInteractable;
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         Ray secondaryRay = new Ray(InteractorSource.position, InteractorSource.forward);

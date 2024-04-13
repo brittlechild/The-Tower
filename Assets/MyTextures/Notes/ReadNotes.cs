@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityStandardAssets.Characters.FirstPerson;
-
+﻿using UnityEngine;
 
 public class ReadNotes : MonoBehaviour, IInteractable
 {
@@ -18,6 +14,7 @@ public class ReadNotes : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        EventBus.Instance.PauseGameplay();
         noteUI.SetActive(true);
         pickUpSound.Play();
         hud.SetActive(false);
@@ -40,27 +37,12 @@ public class ReadNotes : MonoBehaviour, IInteractable
         pickUpText.SetActive(false);
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        pickUpText.SetActive(true);
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        pickUpText.SetActive(false);
-    }
     public void ExitButton()
     {
-
         noteUI.SetActive(false);
         hud.SetActive(true);
         inv.SetActive(true);
-        player.GetComponent<CharacterController>().enabled = true;
-
+        EventBus.Instance.ResumeGameplay();
     }
 
-    public string GetInteractionPrompt()
-    {
-        throw new System.NotImplementedException();
-    }
 }
