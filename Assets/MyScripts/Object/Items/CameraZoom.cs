@@ -46,7 +46,6 @@ public class CameraZoom : MonoBehaviour
         postFX.profile.TryGetSettings(out grain);
         postFX.profile.TryGetSettings(out vignette);
         postFX.profile.TryGetSettings(out exposure);
-
     }
 
 
